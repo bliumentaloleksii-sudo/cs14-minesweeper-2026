@@ -1,0 +1,18 @@
+.cell {
+    width: 30px; height: 30px; background-color: #bdbdbd; padding: 0; margin: 0;
+    border: 2px solid; border-color: #ffffff #7b7b7b #7b7b7b #ffffff;
+    font-weight: bold; font-size: 16px; display: flex;
+    align-items: center; justify-content: center; cursor: pointer; user-select: none;
+}
+.opened { background-color: #e0e0e0; border: 1px solid #999; }
+.exploded { background-color: red; }
+.flagged { color: red; }
+
+.count_1 { color: blue; }
+.count_2 { color: green; }
+.count_3 { color: red; }
+.count_4 { color: darkblue; }
+.count_5 { color: darkred; }
+.count_6 { color: teal; }
+.count_7 { color: black; }
+.count_8 { color: gray; }
