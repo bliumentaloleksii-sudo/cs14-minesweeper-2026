@@ -1,26 +1,7 @@
-.wrapper {
-    display: flex; flex-direction: column; align-items: center; gap: 15px;
-}
-.container {
-    background-color: #bdbdbd; padding: 10px; display: inline-block;
-    border: 3px solid; border-color: #ffffff #7b7b7b #7b7b7b #ffffff;
-}
-.gameHeader {
-    display: flex; justify-content: space-between; align-items: center;
-    background-color: #bdbdbd; padding: 10px; margin-bottom: 10px;
-    border: 2px solid; border-color: #7b7b7b #ffffff #ffffff #7b7b7b;
-}
-.counter {
-    background-color: black; color: red; font-family: 'Courier New', monospace;
-    font-size: 24px; padding: 2px 5px; border: 1px solid #7b7b7b; min-width: 55px; text-align: center;
-}
-.resetBtn {
-    font-size: 24px; cursor: pointer; width: 40px; height: 40px;
-    background-color: #bdbdbd; border: 2px solid;
-    border-color: #ffffff #7b7b7b #7b7b7b #ffffff;
-    display: flex; align-items: center; justify-content: center;
-}
+.wrapper { display: flex; flex-direction: column; align-items: center; gap: 15px; }
+.container { background-color: #bdbdbd; padding: 10px; display: inline-block; border: 3px solid; border-color: #ffffff #7b7b7b #7b7b7b #ffffff; }
+.gameHeader { display: flex; justify-content: space-between; align-items: center; background-color: #bdbdbd; padding: 10px; margin-bottom: 10px; border: 2px solid; border-color: #7b7b7b #ffffff #ffffff #7b7b7b; }
+.counter { background-color: black; color: red; font-family: 'Courier New', monospace; font-size: 24px; padding: 2px 5px; border: 1px solid #7b7b7b; min-width: 55px; text-align: center; }
+.resetBtn { font-size: 24px; cursor: pointer; width: 40px; height: 40px; background-color: #bdbdbd; border: 2px solid; border-color: #ffffff #7b7b7b #7b7b7b #ffffff; display: flex; align-items: center; justify-content: center; }
 .resetBtn:active { border-color: #7b7b7b #ffffff #ffffff #7b7b7b; }
-.statusMessage {
-    color: white; font-size: 18px; font-weight: bold; background: rgba(0,0,0,0.6); padding: 5px 15px; border-radius: 5px;
-}
+.statusMessage { color: white; font-size: 18px; font-weight: bold; background: rgba(0,0,0,0.6); padding: 5px 15px; border-radius: 5px; }

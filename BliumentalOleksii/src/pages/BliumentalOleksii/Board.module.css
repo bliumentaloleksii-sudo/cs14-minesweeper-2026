@@ -1,6 +1,1 @@
-.board {
-    display: grid;
-    border: 3px solid;
-    border-color: #7b7b7b #ffffff #ffffff #7b7b7b;
-    background-color: #7b7b7b;
-}
+.board { display: grid; border: 3px solid; border-color: #7b7b7b #ffffff #ffffff #7b7b7b; background-color: #7b7b7b; }

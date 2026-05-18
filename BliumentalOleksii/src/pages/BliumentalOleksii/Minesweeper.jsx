@@ -8,7 +8,7 @@ const MINES_COUNT = 15;
 
 const Minesweeper = () => {
     const [field, setField] = useState([]);
-    const [status, setStatus] = useState('PLAYING'); // 'PLAYING', 'WON', 'LOST'
+    const [status, setStatus] = useState('PLAYING'); 
     const [timer, setTimer] = useState(0);
     const [flagsCount, setFlagsCount] = useState(0);
     const [message, setMessage] = useState('');
@@ -25,7 +25,6 @@ const Minesweeper = () => {
         setFlagsCount(0);
         setMessage('');
 
-        // Початкова генерація порожнього поля
         const initialField = Array.from({ length: ROWS }, () =>
             Array.from({ length: COLS }, () => ({
                 type: 'EMPTY', state: 'CLOSED', neighborMines: 0
@@ -56,8 +55,6 @@ const Minesweeper = () => {
                 placed++;
             }
         }
-
-        // Розрахунок сусідів
         for (let r = 0; r < ROWS; r++) {
             for (let c = 0; c < COLS; c++) {
                 if (currentField[r][c].type === 'MINE') continue;
@@ -93,7 +90,7 @@ const Minesweeper = () => {
     const handleCellClick = (r, c) => {
         if (status !== 'PLAYING' || field[r][c].state !== 'CLOSED') return;
 
-        const newField = JSON.parse(JSON.stringify(field)); // Глибоке копіювання стану
+        const newField = JSON.parse(JSON.stringify(field)); 
 
         if (isFirstClick.current) {
             placeMinesSafely(newField, r, c);
@@ -106,7 +103,6 @@ const Minesweeper = () => {
             setStatus('LOST');
             clearInterval(timerId.current);
             setMessage('Ви натрапили на міну! Гра закінчена.');
-            // Відкриваємо всі міни
             for (let row = 0; row < ROWS; row++) {
                 for (let col = 0; col < COLS; col++) {
                     if (newField[row][col].type === 'MINE') newField[row][col].state = 'OPENED';
@@ -114,8 +110,6 @@ const Minesweeper = () => {
             }
         } else {
             openCellRecursive(newField, r, c);
-            
-            // Перевірка перемоги
             let hasWon = true;
             for (let row = 0; row < ROWS; row++) {
                 for (let col = 0; col < COLS; col++) {
@@ -150,12 +144,6 @@ const Minesweeper = () => {
         setField(newField);
     };
 
-    const getResetButtonEmoji = () => {
-        if (status === 'WON') return '😎';
-        if (status === 'LOST') return '😵';
-        return '🙂';
-    };
-
     return (
         <div className={styles.wrapper}>
             <div className={styles.container}>
@@ -164,17 +152,13 @@ const Minesweeper = () => {
                         {String(MINES_COUNT - flagsCount).padStart(3, '0')}
                     </div>
                     <button className={styles.resetBtn} onClick={initGame}>
-                        {getResetButtonEmoji()}
+                        {status === 'WON' ? '😎' : status === 'LOST' ? '😵' : '🙂'}
                     </button>
                     <div className={styles.counter}>
                         {String(timer).padStart(3, '0')}
                     </div>
                 </header>
-                <Board 
-                    field={field} 
-                    onCellClick={handleCellClick} 
-                    onCellContextMenu={handleCellContextMenu} 
-                />
+                <Board field={field} onCellClick={handleCellClick} onCellContextMenu={handleCellContextMenu} />
             </div>
             {message && <div className={styles.statusMessage}>{message}</div>}
         </div>
