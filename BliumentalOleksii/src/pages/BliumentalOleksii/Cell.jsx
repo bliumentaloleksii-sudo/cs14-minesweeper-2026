@@ -23,8 +23,23 @@ const Cell = ({ row, col, data, onClick, onContextMenu }) => {
         return classes;
     };
 
+    const getAriaLabel = () => {
+        if (data.state === 'FLAGGED') return 'Прапорець';
+        if (data.state === 'OPENED') {
+            if (data.type === 'MINE') return 'Міна';
+            return data.neighborMines > 0 ? `Відкрита клітинка з числом ${data.neighborMines}` : 'Відкрита порожня клітинка';
+        }
+        return 'Закрита клітинка';
+    };
+
     return (
-        <button type="button" className={getClassName()} onClick={() => onClick(row, col)} onContextMenu={(e) => onContextMenu(e, row, col)}>
+        <button
+            type="button"
+            className={getClassName()}
+            onClick={() => onClick(row, col)}
+            onContextMenu={(e) => onContextMenu(e, row, col)}
+            aria-label={getAriaLabel()}
+        >
             {getCellContent()}
         </button>
     );

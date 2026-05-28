@@ -160,7 +160,11 @@ const Minesweeper = () => {
                 </header>
                 <Board field={field} onCellClick={handleCellClick} onCellContextMenu={handleCellContextMenu} />
             </div>
-            {message && <div className={styles.statusMessage}>{message}</div>}
+            {message && (
+                <div className={styles.statusMessage} role="status" aria-live="polite">
+                    {message}
+                </div>
+            )}
         </div>
     );
 };
