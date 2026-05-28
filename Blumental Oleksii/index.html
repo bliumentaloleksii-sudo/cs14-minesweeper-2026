@@ -5,25 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Сапер - Блюменталь Олексій</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+      /* Minimal visually-hidden helper for status messages */
+      .visually-hidden {position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;}
+    </style>
 </head>
 <body>
     <div class="minesweeper-container">
         <header class="game-header">
             <div class="counter" id="mines-count">010</div>
-            <button class="start-btn" id="start-btn">🙂</button>
+            <button class="start-btn" id="start-btn" type="button" aria-label="Почати нову гру">🙂</button>
             <div class="counter" id="timer">000</div>
         </header>
 
-        <main class="game-board">
-            <div class="cell hidden"></div> <div class="cell revealed" 
-            data-number="1">1</div> <div class="cell revealed" 
-            data-number="2">2</div> <div class="cell 
-            hidden flag">🚩</div> <div class="cell 
-            hidden"></div> <div class="cell 
-            revealed mine">💣</div> <div class="cell 
-            hidden"></div> <div class="cell revealed 
-            mine-exploded">💥</div> <div class="cell hidden flag 
-            false-flag">❌</div> </main>
+        <main class="game-board" aria-label="Ігрове поле">
+            <div id="game-status" role="status" aria-live="polite" class="visually-hidden"></div>
+
+            <button class="cell hidden" type="button" aria-label="Закрита клітинка"></button>
+            <button class="cell revealed" data-number="1" type="button" aria-label="Відкрита клітинка з числом 1">1</button>
+            <button class="cell revealed" data-number="2" type="button" aria-label="Відкрита клітинка з числом 2">2</button>
+            <button class="cell hidden flag" type="button" aria-label="Клітинка з прапорцем">🚩</button>
+            <button class="cell hidden" type="button" aria-label="Закрита клітинка"></button>
+            <button class="cell revealed mine" type="button" aria-label="Клітинка з міною">💣</button>
+            <button class="cell hidden" type="button" aria-label="Закрита клітинка"></button>
+            <button class="cell revealed mine-exploded" type="button" aria-label="Міна, на яку натиснув користувач">💥</button>
+            <button class="cell hidden flag false-flag" type="button" aria-label="Неправильний прапорець">❌</button>
+        </main>
     </div>
 </body>
 </html>
