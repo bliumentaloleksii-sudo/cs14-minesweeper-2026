@@ -72,27 +72,35 @@ function renderBoard() {
     for (let r = 0; r < gameState.rows; r++) {
         for (let c = 0; c < gameState.cols; c++) {
             const cellData = field[r][c];
-            const cellEl = document.createElement('div');
+            const cellEl = document.createElement('button');
+            cellEl.setAttribute('type', 'button');
             cellEl.classList.add('cell');
 
-            // Візуалізація станів
+            // Візуалізація станів і доступність
             if (cellData.state === 'opened') {
                 cellEl.classList.add('revealed');
                 if (cellData.type === 'mine') {
                     cellEl.classList.add('mine-exploded');
                     cellEl.textContent = '💣';
+                    cellEl.setAttribute('aria-label', 'Міна');
                 } else if (cellData.neighborMines > 0) {
                     cellEl.textContent = cellData.neighborMines;
                     cellEl.classList.add(`val-${cellData.neighborMines}`);
+                    cellEl.setAttribute('aria-label', `Відкрита клітинка з числом ${cellData.neighborMines}`);
+                } else {
+                    cellEl.setAttribute('aria-label', 'Відкрита порожня клітинка');
                 }
             } else if (cellData.state === 'flagged') {
                 cellEl.textContent = '🚩';
+                cellEl.setAttribute('aria-label', 'Прапорець');
+            } else {
+                cellEl.setAttribute('aria-label', 'Закрита клітинка');
             }
 
             // Обробники подій
             cellEl.addEventListener('click', () => handleLeftClick(r, c));
             cellEl.addEventListener('contextmenu', (e) => handleRightClick(e, r, c));
-            
+
             boardEl.appendChild(cellEl);
         }
     }
@@ -199,6 +207,4 @@ function checkWin() {
 // Кнопка рестарту
 startBtn.addEventListener('click', initGame);
 
-// Запуск першої гри при завантаженні
-initGame();
 /* Кінець */

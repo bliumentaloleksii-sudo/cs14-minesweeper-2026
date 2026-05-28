@@ -10,14 +10,15 @@
     <div class="minesweeper-container">
         <header class="game-header">
             <div class="counter" id="flags-count">015</div>
-            <button class="start-btn" id="start-btn">🙂</button>
+            <button class="start-btn" id="start-btn" type="button" aria-label="Почати нову гру">🙂</button>
             <div class="counter" id="timer">000</div>
         </header>
 
-        <main class="game-board" id="game-board"></main>
+        <main class="game-board" id="game-board">
+            <div id="game-status" role="status" aria-live="polite" class="visually-hidden"></div>
+        </main>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-/* Кінець */
